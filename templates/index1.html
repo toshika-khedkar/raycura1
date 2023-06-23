@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Keypress Events</title>
+</head>
+
+<body>
+    <h1>Keypress Events1</h1>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+
+        document.addEventListener("keydown", function(event) {
+            const key = event.key;
+            socket.emit('keypress', {
+                key: key
+            });
+        });
+
+        socket.on('keypress', function(key) {
+            console.log('Key pressed:', key);
+            // Handle the keypress event in JavaScript
+        });
+    </script>
+</body>
+
+</html>
